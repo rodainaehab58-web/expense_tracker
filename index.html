@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخطط تتبع المصروفات - Expense Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Cairo:wght@300;400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Home Screen / App-like install support -->
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkV4cGVuc2UgVHJhY2tlciAtINmF2K7Yt9i3INin2YTZhdi12LHZiNmB2KfYqiIsICJzaG9ydF9uYW1lIjogIkV4cGVuc2VzIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNFRkY3RkQiLCAidGhlbWVfY29sb3IiOiAiIzA3NTk4NSIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFHNkVsRVFWUjRuTzNkdlk0Y1JSVEY4VHRydEFhRUF5eEVhbGxrOEJqSUVTbkpCa1JJK3hCMnZINElSMlQ3QkVSK0RnaEJwTWlZd0FpMFNHWUo3TFpuZS91anFxdXF1Kzg5LzE5c3o3WnJ6cWxiUFIvcmcrM00zYk9MNjYydkFXMWRYVDQ1YkgwTm5VMHZoTENqczFVcFZ2K2hoQjV6MWl6RGFqK0k0Q1BYR2tWby9nTUlQa3ExTEVLekJ5YjRxSzFGRWFvL0lNRkhheldMY0ZMcmdjd0lQOVpSTTJkVm1rVHdzWlhTYVZBOEFRZy90bFNhdjZJQ0VIN3NRVWtPRnhlQThHTlBsdVp4VVFFSVAvWm9TUzZ6QzBENHNXZTUrY3dxQU9HSEJ6azVUUzRBNFljbnFYbE5LZ0RoaDBjcHVaMHRBT0dIWjNQNXJmcFJDTUNieVFLdyt5T0NxUnlQRm9Ed0k1S3hQSE1FZ3JUQkFyRDdJNktoWERNQklPMVdBZGo5RVZrLzMwd0FTTHRSQUhaL0tEak9PUk1BMHQ0VmdOMGZTcnE4TXdFZ2pRSkEyc0dNNHc5ME1RRWdqUUpBR2dXQU5Bb0FhU2ZjQUVNWkV3RFNLQUNrVVFCSSsyRHJDMUR3OHRIVHhYLzMvdlBIRmE4RWZSU2dzcEt3cHo0ZXBhaUhBbFJRTy9RNVA0OHlsS0VBQzYwZCtqR1VvUXdGeUxRMCtLY1B6N1AvenIrL1BzdjY4OTIxVVlSMEI5NElTNU1UL0NWaFQ1VlRDb293andMTVNBbCt5OERQU1NrRVJSaEhBVWJzUGZoOUZHRVpDakJnS3Z4N0N2MllxVEpRZ3Bzb3dCSHZ3ZStqQ1BQNEtNUmIwY0p2Tm4zZGUza1pkMnRNQUJzUGc5ZmdEeG1iQnVxVFFMb0FFWGY5S1J5SmJwTXRnTUt1UDRacDhKN2tQWUJ5K00zRy81Mks5d1Z5QlZBUGY0Y1N2Q0ZWQU1KL0V5VVFLZ0RoSDZaZUFwa0NERkVQZjBkNUhTUUtNTFNiS1QvcFE0YldRMkVLaEM4QTRVK25XSUxRQlNEOCtkUktFTG9BZllRL2pkSTZoUzFBNUYxckMxSFhNMlFCT1BxVVV6a0tTWHdwdmxYNGYzdDF4NzY2L0xUSlk2ZjY0ZXRYOXUwWFYwMGUrL1RoZWZZWDg3MEpOd0VpN2xKN0VtMTl3eFdnajZOUG1lanJGNm9BL2QwcCtwTzNsdjQ2UnBvQ29Rb0E1QXBUQUhiL3RxSk9nVEFGQUpZSVVZQW91NUUzRWRZOVJBSDZPUDYwRVhGZEpkNEkyNHZQUC9yUGZ2bnU1ZGFYZ1NQdUp3QTN2K3VLZGpQc3ZnQkFDUW9BYWE0TDRIMzhSdUg1ZVhCZGdEN08vK3VJdE02aENnRGtvZ0NRUmdFZ3plMGJZUjV2dkg3LzU4UStlZlpadGNmNzZleFBlM0R2ZGJYSEsvSHkwVk9YdjEwNnpBU0lkR1BtUVpUMURsTUFZQWtLQUdrVUFOSW9BS1JSQUVpakFKQkdBU0RON1J0aEh2R05zUDFoQWtBYUJZQTBDZ0JwRkFEU3doUWcrdSt4MzVzbzYrMjJBQjQvZWh1WjErZkRiUUdBR2lnQXBGRUFTQXRWZ0NnM1puc1hhWjFkZnhUaS92UEhycjRiWFBzN3daMFgzLzloSDk2NXJ2NjRxYnplQUpzRm13QkFMZ29BYWU0TDBCKy9rYzZuZTlSZlg4L0hIN01BQlFCS2hDd0FVNkNOaU9zYW9nRGV4N0JYRWRZOVJBR0FwY0lVZ0p2aHRxTGQvSFpjdnhHMnRRZjNYdHRmNXkrMnZnd1VDRE1CekpnQ3JVVGQvYzJDRldBSUpTZ1RmZjNDRlNEUzdyUkgwZFkzWEFHR1JOL0ZXbEZZdDVBRkdOcWxGSjdNbW9iV0s5cnVieGEwQUdZeG42d3RSVjNQc0FVWXdoUklvN1JPb1F2QVVTaWZ5dEduRTdvQVpwUWdoMXI0elFRS1lFWUpVaWlHMzB5a0FHTW93UnZLNnlCVGdMSGRUUG5KTnh2Lzl5dnMvbVpDQlRDakJIM3E0VGNUSzRBWkplZ1EvamZrQ21CR0NRai9lNGU3WnhmYi9VYWxqVTM5VXEzVGgrY3JYc2s2cGdvK0Z2Ni92L2x5OU85OC9PUFB4ZGUwTmVrQ2RNYUtFS2tFdWJ2K1ZQRDdQQmVCQXJ3VmRSclUzdlhIZUMwQkJUZ1NyUVM1NFY4Uy9ENXZSZUE3d1VlNlVBd1ZvUXVUaHlJczJmVlZNUUZHcFB6VzZUMlZJZVVWcktudzE5ajlPNTZtQUFXWXNmY2lsQWJmckc3NE8xNUt3QkZveHRTeHFOTVBZY3RDNUx4WHdYRm5IaE1nMDlML2tHTkpLWmErTVpjVC9CYTdmOGZERkdBQ1pFcVpDRVBXZUplWkhUOGZCVmpvT0d4Yi9qZE5oTDRNQmFoZzdUSVErbm9vUUdWRDRTd3BCV0Z2aXdLc2dCRHZsK1RIb1lFT0JSRFg2cVZLRHkrQm1sRUFpS01BcUw1YmU5bjl6U2dBM3FvVldrL2hONk1BRU1mTG9IaW4yNzJWdmhIR0JNQXR1V0gyR240ekpnQkdwRXdEejhIdlVBQk1paER5S1J5QklJMENRQm9GZ0RRS0FHa1VBTkpPcmk2ZkhMYStDR0FyVEFCSW93Q1FSZ0VnalFKQTJvbVpHVGZDVUhSMStlVEFCSUEwQ2dCcDd3ckFNUWhLdXJ3ekFTRHRSZ0dZQWxCd25ITW1BS1RkS2dCVEFKSDE4ODBFZ0xUQkFqQUZFTkZRcnBrQWtEWmFBS1lBSWhuTDgrUUVvQVNJWUNySEhJRWdiYllBVEFGNE5wZmZwQWxBQ2VCUlNtNlRqMENVQUo2azVqWHJIb0FTd0lPY25HYmZCRk1DN0ZsdVBoZTlDa1FKc0VkTGNybjRaVkJLZ0QxWm1zZWk5d0VvQWZhZ0pJZkZiNFJSQW15cE5IOVZ3M3YzN09LNjV1TUJZMnB0dkZVL0NzRTB3QnBxNXF4WllKa0dxSzNGQnR0OHg2WUlLTlh5WkxIYWtZVWlJTmNhUityVnord1VBWFBXdkpmYzlLYVZNcUN6MVFzby93TVd0NWw0N0NaSjNnQUFBQUJKUlU1RXJrSmdnZz09IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifV19">
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon" href="data:image/png;base64,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">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Expense Tracker">
+    <meta name="theme-color" content="#075985">
+
+    <style>
+        body {
+            font-family: 'Cairo', 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #E2F1F9 0%, #EFF7FD 100%);
+            min-height: 100vh;
+        }
+        .title-cursive { font-family: 'Satisfy', cursive; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(226, 241, 249, 0.5); }
+        ::-webkit-scrollbar-thumb { background: #B9D7EA; border-radius: 4px; }
+        .dotted-input {
+            border: none;
+            border-bottom: 1.5px dotted #a3cbdc;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .dotted-input:focus { outline: none; border-bottom: 2px solid #579cb9; }
+        .table-row-dotted { border-bottom: 1px dotted #cbdbe5; }
+        .modal-overlay { transition: opacity 0.2s ease; }
+        .modal-overlay .modal-panel { transition: transform 0.2s ease; }
+        @media (max-width: 767px) {
+            body { padding-bottom: 84px; } /* room for the floating add button */
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden p-3 md:p-6 lg:p-8 flex justify-center items-center">
+
+    <!-- Top-Left Soft Sandy Wave & Shell -->
+    <div class="absolute top-0 left-0 w-32 h-32 md:w-48 md:h-48 pointer-events-none opacity-80 select-none z-0">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full fill-[#FAF0E6]">
+            <path d="M 0,0 L 200,0 C 150,80 80,120 0,160 Z" />
+        </svg>
+        <svg class="absolute top-4 left-4 md:top-8 md:left-8 w-10 h-10 md:w-14 md:h-14 text-[#E6D5C3] opacity-90 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 .79c3.15.44 5.72 2.78 6.51 5.86l-2 .54c-.61-2.37-2.58-4.17-5-4.51v-1.89zm-2 0v1.89c-2.42.34-4.39 2.14-5 4.51l-2-.54c.79-3.08 3.36-5.42 6.51-5.86zm-5.43 8.35l1.93.52c-.17.65-.25 1.33-.25 2.04 0 1.25.29 2.43.81 3.49l-1.68 1.05C5.46 16.59 5 14.86 5 13c0-1.12.19-2.2.57-3.21zM12 20c-3.15-.44-5.72-2.78-6.51-5.86l2-.54c.61 2.37 2.58 4.17 5 4.51v1.89zm2 0v-1.89c2.42-.34 4.39-2.14 5-4.51l2 .54c-.79 3.08-3.36 5.42-6.51 5.86zm4.57-10.35c.38 1.01.57 2.09.57 3.21 0 1.86-.46 3.59-1.38 5.16l-1.68-1.05c.52-1.06.81-2.24.81-3.49 0-.71-.08-1.39-.25-2.04l1.93-.52z"/>
+        </svg>
+    </div>
+
+    <div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 pointer-events-none opacity-[0.05] z-0 select-none">
+        <svg viewBox="0 0 100 100" class="w-full h-full text-blue-900 fill-current">
+            <path d="M100,0 C85,15 70,20 50,20 C30,20 15,35 0,50 C15,55 35,45 50,35 C65,25 80,15 100,0 Z M100,20 C85,35 75,40 60,45 C45,50 35,65 20,80 C35,80 50,70 65,60 C80,50 90,35 100,20 Z" />
+        </svg>
+    </div>
+
+    <!-- Main Beautiful Paper Canvas Wrapper -->
+    <div class="relative w-full max-w-4xl bg-white/80 backdrop-blur-md rounded-3xl shadow-xl border border-blue-100 p-4 md:p-8 z-10 overflow-hidden flex flex-col justify-between" style="min-height: 92vh;">
+
+        <div class="absolute top-6 right-10 md:top-10 md:right-14 text-orange-200 opacity-70 title-cursive text-2xl select-none">♥</div>
+
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="title-cursive text-4xl md:text-6xl text-sky-800 tracking-wide font-normal relative inline-block">
+                Expense Tracker
+                <span class="absolute -right-7 top-2 text-base md:text-lg text-rose-300 transform rotate-12">♥</span>
+            </h1>
+
+            <!-- Compact Period Bar (Month/Year + quick actions) -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 mt-5 bg-sky-50/60 border border-sky-100 rounded-2xl px-3.5 py-2.5">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🗓️</span>
+                    <span id="periodDisplay" class="text-sm md:text-lg font-bold text-sky-900">-</span>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <button onclick="openSettingsModal()" class="flex-1 sm:flex-none bg-white border border-sky-200 text-sky-700 text-xs font-semibold px-3.5 py-2.5 sm:py-2 rounded-xl hover:bg-sky-50 active:scale-95 transition flex items-center justify-center gap-1.5">
+                        <span>⚙️</span><span>الإعدادات</span>
+                    </button>
+                    <button onclick="openEndMonthModal()" class="flex-1 sm:flex-none bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold px-3.5 py-2.5 sm:py-2 rounded-xl hover:bg-amber-100 active:scale-95 transition flex items-center justify-center gap-1.5">
+                        <span>📤</span><span>إنهاء الشهر</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Easy Transaction Input Box -->
+        <div class="bg-sky-50/60 border border-sky-100 rounded-2xl p-4 mb-5 shadow-sm">
+            <button type="button" onclick="toggleAddForm()" class="w-full flex items-center justify-between md:pointer-events-none md:cursor-default">
+                <h3 class="text-sm font-semibold text-sky-900 flex items-center gap-2">
+                    <span>✨ إضافة عملية جديدة (Add Transaction)</span>
+                </h3>
+                <svg id="addFormChevron" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-sky-700 md:hidden transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <form id="txForm" onsubmit="addTransaction(event)" class="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-3.5 items-end mt-3.5">
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">التاريخ</label>
+                    <input type="date" id="txDate" required class="bg-white border border-blue-200 rounded-xl px-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+                <div class="flex flex-col gap-1 sm:col-span-2">
+                    <label class="text-xs text-slate-500 font-medium">الوصف / التصنيف</label>
+                    <input type="text" id="txDesc" required placeholder="مثال: بقالة، راتب، تحويل سحب..." class="bg-white border border-blue-200 rounded-xl px-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">النوع</label>
+                    <select id="txType" onchange="handleTypeChange()" class="bg-white border border-blue-200 rounded-xl px-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                        <option value="expense">مصروف (Spend) 💸</option>
+                        <option value="income">دخل (Earn) 💰</option>
+                        <option value="transfer">تحويل بين الحسابات 🔁</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">المبلغ والجهة</label>
+                    <div id="methodContainer" class="relative">
+                        <input type="number" step="any" id="txAmount" required placeholder="0.00" class="w-full bg-white border border-blue-200 rounded-xl pl-16 pr-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                        <select id="txMethod" class="absolute left-1.5 top-1.5 bottom-1.5 bg-slate-100 text-xs rounded-lg px-2 text-slate-700 border-none outline-none font-semibold">
+                            <option value="cash">كاش</option>
+                            <option value="visa">فيزا</option>
+                        </select>
+                    </div>
+                    <div id="transferDirContainer" class="hidden relative space-y-1.5">
+                        <input type="number" step="any" id="txAmountTransfer" placeholder="0.00 (المبلغ المستلم)" class="w-full bg-white border border-blue-200 rounded-xl px-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                        <select id="txTransferDir" class="w-full bg-slate-100 border border-slate-200 text-xs rounded-xl py-2.5 px-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
+                            <option value="visa_to_cash">من فيزا إلى كاش (سحب) 💳 ➔ 💵</option>
+                            <option value="cash_to_visa">من كاش إلى فيزا (إيداع) 💵 ➔ 💳</option>
+                        </select>
+                        <input type="number" step="any" id="txTransferTax" placeholder="0.00 (رسوم / ضريبة التحويل)" class="w-full bg-amber-50 border border-amber-200 rounded-xl px-3 py-3 md:py-1.5 text-sm md:text-xs text-slate-700 placeholder:text-amber-600/70 focus:outline-none focus:ring-2 focus:ring-amber-300">
+                    </div>
+                </div>
+                <div class="sm:col-span-2 md:col-span-1">
+                    <button type="submit" class="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-medium py-3 md:py-2.5 rounded-xl transition shadow-sm flex items-center justify-center gap-1">
+                        <span>أضف العملية</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Desktop View: Table Container (Hidden on Mobile) -->
+        <div class="hidden md:block flex-grow overflow-x-auto border border-blue-100 rounded-2xl bg-white shadow-inner mb-6 min-h-[300px]">
+            <table class="w-full text-right border-collapse min-w-[800px]">
+                <thead>
+                    <tr class="bg-[#DCEEFA] text-sky-900 text-xs font-semibold select-none">
+                        <th class="p-3 text-center rounded-tr-xl w-[11%] border-l border-blue-100/30">التاريخ (Date)</th>
+                        <th class="p-3 w-[22%] border-l border-blue-100/30">البيان والتصنيف (Description / Category)</th>
+                        <th class="p-3 text-center w-[10%] border-l border-blue-100/30">كاش (Cash)</th>
+                        <th class="p-3 text-center w-[10%] border-l border-blue-100/30">فيزا (Visa)</th>
+                        <th class="p-3 text-center w-[8%] border-l border-blue-100/30">رسوم (Fee)</th>
+                        <th class="p-3 text-center w-[12%] border-l border-blue-100/30">رصيد الكاش (Cash Balance)</th>
+                        <th class="p-3 text-center w-[12%] border-l border-blue-100/30">رصيد الفيزا (Visa Balance)</th>
+                        <th class="p-3 w-[10%]">ملاحظات (Notes)</th>
+                        <th class="p-3 text-center w-[5%] rounded-tl-xl">⚙️</th>
+                    </tr>
+                </thead>
+                <tbody id="trackerTableBody" class="text-xs text-slate-700"></tbody>
+            </table>
+        </div>
+
+        <!-- Mobile View: Cards Container -->
+        <div class="md:hidden flex-grow mb-5">
+            <h4 class="text-xs font-bold text-sky-950 px-1 mb-2 select-none flex items-center justify-between">
+                <span>📊 سجل العمليات (Transactions List)</span>
+                <span class="text-[10px] text-slate-400">اسحب للأسفل للمزيد</span>
+            </h4>
+            <div id="mobileCardsContainer" class="space-y-3 max-h-[440px] overflow-y-auto pr-1"></div>
+        </div>
+
+        <!-- Empty State Display -->
+        <div id="emptyState" class="hidden flex flex-col justify-center items-center py-12 text-slate-400 select-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-slate-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+            <p class="text-sm">لا توجد معاملات مضافة لهذا الشهر بعد.</p>
+            <p class="text-[10px] mt-1">ابدأ بإدخال العمليات في الاستمارة أعلاه!</p>
+        </div>
+
+        <!-- Footer Summary Section -->
+        <div class="border-t border-sky-100 pt-5 mt-auto">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2.5 md:gap-3 text-center">
+                <div class="bg-[#FAF8F5] border border-orange-100 rounded-xl p-2.5 md:p-3 shadow-sm flex flex-col justify-center">
+                    <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">الرصيد المتبقي كاش</span>
+                    <span id="endingCashDisplay" class="text-base md:text-lg font-bold text-amber-700">0.00</span>
+                </div>
+                <div class="bg-[#F3F8FC] border border-blue-100 rounded-xl p-2.5 md:p-3 shadow-sm flex flex-col justify-center">
+                    <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">الرصيد المتبقي فيزا</span>
+                    <span id="endingVisaDisplay" class="text-base md:text-lg font-bold text-blue-700">0.00</span>
+                </div>
+                <div class="bg-rose-50/50 border border-rose-100 rounded-xl p-2.5 md:p-3 shadow-sm flex flex-col justify-center">
+                    <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">إجمالي الكاش المصروف</span>
+                    <span id="totalCashSpentDisplay" class="text-base md:text-lg font-bold text-rose-600">0.00</span>
+                </div>
+                <div class="bg-rose-50/50 border border-rose-100 rounded-xl p-2.5 md:p-3 shadow-sm flex flex-col justify-center">
+                    <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">إجمالي الفيزا المصروفة</span>
+                    <span id="totalVisaSpentDisplay" class="text-base md:text-lg font-bold text-rose-600">0.00</span>
+                </div>
+                <div class="col-span-2 md:col-span-1 bg-amber-50/60 border border-amber-100 rounded-xl p-2.5 md:p-3 shadow-sm flex flex-col justify-center">
+                    <span class="text-[9px] md:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">إجمالي رسوم التحويل</span>
+                    <span id="totalTaxDisplay" class="text-base md:text-lg font-bold text-amber-700">0.00</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-3 mt-5 pt-4 border-t border-dotted border-slate-200">
+                <div class="flex items-center gap-2 bg-[#FCFAF2] px-4 py-2.5 rounded-full border border-amber-100 text-xs text-slate-700 w-full md:w-auto justify-center md:justify-start">
+                    <span class="text-amber-500">🧡</span>
+                    <span class="font-semibold text-sky-950">أكبر مصروف هذا الشهر:</span>
+                    <span id="biggestExpenseDisplay" class="font-bold text-amber-800">لا يوجد</span>
+                </div>
+
+                <div class="flex gap-2 w-full md:w-auto justify-center md:justify-end">
+                    <button onclick="printTracker()" class="flex-1 md:flex-none bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs px-4 py-3 md:py-2.5 rounded-xl transition flex items-center justify-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                        <span>طباعة / حفظ PDF</span>
+                    </button>
+                    <button onclick="confirmClearAll()" class="flex-1 md:flex-none bg-rose-50 hover:bg-rose-100 text-rose-700 font-medium text-xs px-4 py-3 md:py-2.5 rounded-xl transition flex items-center justify-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        <span>تصفير هذا الشهر</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating quick-add button (mobile only) -->
+    <button onclick="scrollToAddForm()" class="md:hidden fixed bottom-5 right-5 z-40 bg-gradient-to-br from-sky-500 to-sky-600 text-white rounded-full w-14 h-14 shadow-xl flex items-center justify-center active:scale-90 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+    </button>
+
+    <!-- Bottom-Left Sand wave with Starfish -->
+    <div class="absolute bottom-0 left-0 w-36 h-36 md:w-64 md:h-64 pointer-events-none opacity-90 select-none z-0">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full fill-[#FAF0E6]">
+            <path d="M 0,200 L 0,60 C 50,110 120,130 200,200 Z" />
+        </svg>
+        <svg class="absolute bottom-4 left-4 md:bottom-8 md:left-10 w-10 h-10 md:w-16 md:h-16 text-[#FAD5A5] opacity-90 drop-shadow transform rotate-[15deg] hover:rotate-[30deg] transition duration-700" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.785 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192L12 .587z"/>
+        </svg>
+    </div>
+
+    <div class="absolute bottom-6 right-8 text-rose-300 opacity-60 pointer-events-none select-none z-0 text-xl">♥</div>
+
+    <!-- Toast -->
+    <div id="toastNotification" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-4 py-2.5 rounded-full shadow-lg z-50 opacity-0 transition-opacity duration-300 pointer-events-none flex items-center gap-2">
+        <span id="toastIcon">✨</span>
+        <span id="toastText">تم الحفظ بنجاح</span>
+    </div>
+
+    <!-- Settings Modal (Month/Year/Starting balances) -->
+    <div id="settingsModalOverlay" class="modal-overlay hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4 opacity-0">
+        <div class="modal-panel transform translate-y-4 md:translate-y-0 bg-white w-full md:max-w-md rounded-t-3xl md:rounded-3xl shadow-2xl p-5 md:p-6 max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-bold text-sky-950">⚙️ إعدادات الشهر</h3>
+                <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <p class="text-[11px] text-slate-400 mb-3.5">اختيار شهر مختلف من هنا ينقلك لعرض بيانات ذلك الشهر (لو موجودة) بشكل منفصل عن باقي الشهور.</p>
+            <div class="grid grid-cols-2 gap-3.5">
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">الشهر</label>
+                    <select id="trackerMonth" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                        <option value="0">يناير / Jan</option>
+                        <option value="1">فبراير / Feb</option>
+                        <option value="2">مارس / Mar</option>
+                        <option value="3">أبريل / Apr</option>
+                        <option value="4">مايو / May</option>
+                        <option value="5">يونيو / Jun</option>
+                        <option value="6">يوليو / Jul</option>
+                        <option value="7">أغسطس / Aug</option>
+                        <option value="8">سبتمبر / Sep</option>
+                        <option value="9">أكتوبر / Oct</option>
+                        <option value="10">نوفمبر / Nov</option>
+                        <option value="11">ديسمبر / Dec</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">السنة</label>
+                    <input type="number" id="trackerYear" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400" value="2026">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">كاش مبدئي</label>
+                    <input type="number" id="startingCash" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-emerald-700 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-400" value="1000">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">فيزا مبدئية</label>
+                    <input type="number" id="startingVisa" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-blue-700 font-semibold focus:outline-none focus:ring-2 focus:ring-sky-400" value="2000">
+                </div>
+            </div>
+            <button onclick="saveSettingsAndClose()" class="w-full mt-4 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-medium py-3 rounded-xl transition shadow-sm">
+                حفظ والانتقال لهذا الشهر
+            </button>
+        </div>
+    </div>
+
+    <!-- End Month / Report Modal -->
+    <div id="endMonthModalOverlay" class="modal-overlay hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4 opacity-0">
+        <div class="modal-panel transform translate-y-4 md:translate-y-0 bg-white w-full md:max-w-md rounded-t-3xl md:rounded-3xl shadow-2xl p-5 md:p-6 max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-1">
+                <h3 class="text-sm font-bold text-sky-950">📤 تقرير نهاية الشهر</h3>
+                <button onclick="closeEndMonthModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <p id="endMonthPeriodLabel" class="text-xs text-slate-400 mb-4">-</p>
+
+            <div class="grid grid-cols-2 gap-2.5 text-center mb-4">
+                <div class="bg-[#FAF8F5] border border-orange-100 rounded-xl p-2.5">
+                    <span class="text-[9px] font-semibold text-slate-500 uppercase block mb-0.5">رصيد الكاش الختامي</span>
+                    <span id="reportEndingCash" class="text-base font-bold text-amber-700">0.00</span>
+                </div>
+                <div class="bg-[#F3F8FC] border border-blue-100 rounded-xl p-2.5">
+                    <span class="text-[9px] font-semibold text-slate-500 uppercase block mb-0.5">رصيد الفيزا الختامي</span>
+                    <span id="reportEndingVisa" class="text-base font-bold text-blue-700">0.00</span>
+                </div>
+                <div class="bg-rose-50/50 border border-rose-100 rounded-xl p-2.5">
+                    <span class="text-[9px] font-semibold text-slate-500 uppercase block mb-0.5">إجمالي المصروف (كاش+فيزا)</span>
+                    <span id="reportTotalSpent" class="text-base font-bold text-rose-600">0.00</span>
+                </div>
+                <div class="bg-amber-50/60 border border-amber-100 rounded-xl p-2.5">
+                    <span class="text-[9px] font-semibold text-slate-500 uppercase block mb-0.5">إجمالي رسوم التحويل</span>
+                    <span id="reportTotalTax" class="text-base font-bold text-amber-700">0.00</span>
+                </div>
+            </div>
+            <div class="bg-sky-50/60 border border-sky-100 rounded-xl p-3 text-xs text-slate-700 mb-4">
+                <span class="font-semibold text-sky-900">عدد العمليات:</span> <span id="reportTxCount">0</span>
+            </div>
+
+            <div class="bg-emerald-50/60 border border-emerald-100 rounded-xl p-3.5 mb-4">
+                <p class="text-xs text-emerald-800 leading-relaxed">
+                    ✅ عند التأكيد، هيتم حفظ هذا الشهر كأرشيف، وهيتنقل رصيدك الختامي (<span id="reportCarryCash" class="font-bold">0.00</span> كاش، <span id="reportCarryVisa" class="font-bold">0.00</span> فيزا) تلقائيًا كرصيد بداية شهر <span id="reportNextPeriodLabel" class="font-bold">-</span>، وهيتفضى جدول العمليات عشان تبدئي الشهر الجديد.
+                </p>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="confirmEndMonth()" class="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium py-3 rounded-xl transition shadow-sm">
+                    تأكيد وبدء الشهر الجديد
+                </button>
+                <button onclick="closeEndMonthModal()" class="px-5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium py-3 rounded-xl transition">
+                    إلغاء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Transaction Modal -->
+    <div id="editModalOverlay" class="modal-overlay hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 md:p-4 opacity-0">
+        <div class="modal-panel transform translate-y-4 md:translate-y-0 bg-white w-full md:max-w-lg rounded-t-3xl md:rounded-3xl shadow-2xl p-5 md:p-6 max-h-[92vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm font-bold text-sky-950 flex items-center gap-2">✏️ تعديل العملية</h3>
+                <button onclick="closeEditModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <form id="editForm" onsubmit="saveEditedTransaction(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <input type="hidden" id="editTxId">
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">التاريخ</label>
+                    <input type="date" id="editTxDate" required class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-slate-500 font-medium">النوع</label>
+                    <select id="editTxType" onchange="handleEditTypeChange()" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                        <option value="expense">مصروف (Spend) 💸</option>
+                        <option value="income">دخل (Earn) 💰</option>
+                        <option value="transfer">تحويل بين الحسابات 🔁</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-1 sm:col-span-2">
+                    <label class="text-xs text-slate-500 font-medium">الوصف / التصنيف</label>
+                    <input type="text" id="editTxDesc" required class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+
+                <div id="editMethodContainer" class="sm:col-span-2 relative">
+                    <label class="text-xs text-slate-500 font-medium block mb-1">المبلغ والجهة</label>
+                    <input type="number" step="any" id="editTxAmount" placeholder="0.00" class="w-full bg-white border border-blue-200 rounded-xl pl-16 pr-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                    <select id="editTxMethod" class="absolute left-1.5 bottom-1.5 bg-slate-100 text-xs rounded-lg px-2 py-1.5 text-slate-700 border-none outline-none font-semibold">
+                        <option value="cash">كاش</option>
+                        <option value="visa">فيزا</option>
+                    </select>
+                </div>
+
+                <div id="editTransferDirContainer" class="hidden sm:col-span-2 space-y-1.5">
+                    <label class="text-xs text-slate-500 font-medium block">تفاصيل التحويل</label>
+                    <input type="number" step="any" id="editTxAmountTransfer" placeholder="0.00 (المبلغ المستلم)" class="w-full bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                    <select id="editTxTransferDir" class="w-full bg-slate-100 border border-slate-200 text-xs rounded-xl py-2 px-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
+                        <option value="visa_to_cash">من فيزا إلى كاش (سحب) 💳 ➔ 💵</option>
+                        <option value="cash_to_visa">من كاش إلى فيزا (إيداع) 💵 ➔ 💳</option>
+                    </select>
+                    <input type="number" step="any" id="editTxTransferTax" placeholder="0.00 (رسوم / ضريبة التحويل)" class="w-full bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 placeholder:text-amber-600/70 focus:outline-none focus:ring-2 focus:ring-amber-300">
+                </div>
+
+                <div class="flex flex-col gap-1 sm:col-span-2">
+                    <label class="text-xs text-slate-500 font-medium">ملاحظات</label>
+                    <input type="text" id="editTxNotes" class="bg-white border border-blue-200 rounded-xl px-3 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-400">
+                </div>
+
+                <div class="sm:col-span-2 flex gap-2 mt-1">
+                    <button type="submit" class="flex-1 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-medium py-3 rounded-xl transition shadow-sm">
+                        حفظ التعديلات
+                    </button>
+                    <button type="button" onclick="closeEditModal()" class="px-5 bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium py-3 rounded-xl transition">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ============ Constants ============
+        const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+
+        // ============ State ============
+        let transactions = [];         // current period's transactions
+        let currentPeriodKey = null;   // e.g. "2026-6" (year-monthIndex)
+        let allPeriods = {};           // { "2026-6": { startingCash, startingVisa, transactions: [] }, ... }
+        let lastEndingCash = 0;
+        let lastEndingVisa = 0;
+
+        // ============ Init ============
+        window.onload = function () {
+            document.getElementById('txDate').value = new Date().toISOString().split('T')[0];
+            loadAllPeriods();
+            migrateOldDataIfNeeded();
+
+            const now = new Date();
+            const savedKey = localStorage.getItem('exp_tracker_current_period');
+            currentPeriodKey = savedKey || `${now.getFullYear()}-${now.getMonth()}`;
+
+            const [y, m] = currentPeriodKey.split('-').map(Number);
+            document.getElementById('trackerYear').value = y;
+            document.getElementById('trackerMonth').value = m;
+
+            loadPeriodIntoUI(currentPeriodKey, true);
+            recalculateBalances();
+        };
+
+        function loadAllPeriods() {
+            const raw = localStorage.getItem('exp_tracker_data');
+            allPeriods = raw ? JSON.parse(raw) : {};
+        }
+
+        function saveAllPeriods() {
+            localStorage.setItem('exp_tracker_data', JSON.stringify(allPeriods));
+        }
+
+        // One-time migration from the old single-list version, if present
+        function migrateOldDataIfNeeded() {
+            const oldTx = localStorage.getItem('exp_tracker_txs');
+            if (oldTx && Object.keys(allPeriods).length === 0) {
+                try {
+                    const parsedTx = JSON.parse(oldTx);
+                    const oldMonthName = localStorage.getItem('exp_tracker_month') || 'يوليو';
+                    const oldYear = parseInt(localStorage.getItem('exp_tracker_year')) || new Date().getFullYear();
+                    const oldCash = parseFloat(localStorage.getItem('exp_tracker_startingCash')) || 0;
+                    const oldVisa = parseFloat(localStorage.getItem('exp_tracker_startingVisa')) || 0;
+                    const monthIdx = monthNames.indexOf(oldMonthName);
+                    const key = `${oldYear}-${monthIdx >= 0 ? monthIdx : 6}`;
+                    allPeriods[key] = { startingCash: oldCash, startingVisa: oldVisa, transactions: parsedTx };
+                    saveAllPeriods();
+                    localStorage.setItem('exp_tracker_current_period', key);
+                } catch (e) { /* ignore malformed old data */ }
+            }
+        }
+
+        function periodKeyFromSelectors() {
+            const m = parseInt(document.getElementById('trackerMonth').value);
+            const y = parseInt(document.getElementById('trackerYear').value) || new Date().getFullYear();
+            return `${y}-${m}`;
+        }
+
+        function periodLabel(key) {
+            const [y, m] = key.split('-').map(Number);
+            return `${monthNames[m]} ${y}`;
+        }
+
+        // Persist the CURRENT in-memory transactions + starting balances under a given key
+        function savePeriodData(key) {
+            const startingCash = parseFloat(document.getElementById('startingCash').value) || 0;
+            const startingVisa = parseFloat(document.getElementById('startingVisa').value) || 0;
+            allPeriods[key] = { startingCash, startingVisa, transactions };
+            saveAllPeriods();
+        }
+
+        // Load a period's data into the in-memory state + starting balance inputs
+        function loadPeriodIntoUI(key, keepCurrentStartingInputsIfNew) {
+            const data = allPeriods[key];
+            if (data) {
+                transactions = data.transactions || [];
+                document.getElementById('startingCash').value = data.startingCash ?? 0;
+                document.getElementById('startingVisa').value = data.startingVisa ?? 0;
+            } else {
+                transactions = [];
+                if (!keepCurrentStartingInputsIfNew) {
+                    document.getElementById('startingCash').value = document.getElementById('startingCash').value || 0;
+                    document.getElementById('startingVisa').value = document.getElementById('startingVisa').value || 0;
+                }
+            }
+            localStorage.setItem('exp_tracker_current_period', key);
+            document.getElementById('periodDisplay').innerText = periodLabel(key);
+        }
+
+        // ============ Settings Modal (month/year/starting balances) ============
+        function openSettingsModal() {
+            const overlay = document.getElementById('settingsModalOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.querySelector('.modal-panel').classList.remove('translate-y-4');
+            });
+        }
+        function closeSettingsModal() {
+            const overlay = document.getElementById('settingsModalOverlay');
+            overlay.classList.add('opacity-0');
+            overlay.querySelector('.modal-panel').classList.add('translate-y-4');
+            setTimeout(() => overlay.classList.add('hidden'), 200);
+        }
+        function saveSettingsAndClose() {
+            const newKey = periodKeyFromSelectors();
+            if (newKey !== currentPeriodKey) {
+                savePeriodData(currentPeriodKey);
+                currentPeriodKey = newKey;
+                loadPeriodIntoUI(newKey, false);
+            } else {
+                savePeriodData(currentPeriodKey);
+            }
+            recalculateBalances();
+            closeSettingsModal();
+            showToast(`تم الانتقال إلى ${periodLabel(currentPeriodKey)} 🗓️`);
+        }
+
+        // ============ End of Month Flow ============
+        function openEndMonthModal() {
+            recalculateBalances(); // ensure totals are fresh
+            const [y, m] = currentPeriodKey.split('-').map(Number);
+            let nextM = m + 1, nextY = y;
+            if (nextM > 11) { nextM = 0; nextY += 1; }
+            const nextKey = `${nextY}-${nextM}`;
+
+            document.getElementById('endMonthPeriodLabel').innerText = `ملخص شهر ${periodLabel(currentPeriodKey)}`;
+            document.getElementById('reportEndingCash').innerText = lastEndingCash.toFixed(2);
+            document.getElementById('reportEndingVisa').innerText = lastEndingVisa.toFixed(2);
+            document.getElementById('reportCarryCash').innerText = lastEndingCash.toFixed(2);
+            document.getElementById('reportCarryVisa').innerText = lastEndingVisa.toFixed(2);
+            document.getElementById('reportNextPeriodLabel').innerText = periodLabel(nextKey);
+            document.getElementById('reportTxCount').innerText = transactions.length;
+
+            const overlay = document.getElementById('endMonthModalOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.querySelector('.modal-panel').classList.remove('translate-y-4');
+            });
+        }
+        function closeEndMonthModal() {
+            const overlay = document.getElementById('endMonthModalOverlay');
+            overlay.classList.add('opacity-0');
+            overlay.querySelector('.modal-panel').classList.add('translate-y-4');
+            setTimeout(() => overlay.classList.add('hidden'), 200);
+        }
+        function confirmEndMonth() {
+            // Save the month that's ending
+            savePeriodData(currentPeriodKey);
+
+            const [y, m] = currentPeriodKey.split('-').map(Number);
+            let nextM = m + 1, nextY = y;
+            if (nextM > 11) { nextM = 0; nextY += 1; }
+            const nextKey = `${nextY}-${nextM}`;
+
+            // Carry the ending balances forward as the new month's starting balances
+            allPeriods[nextKey] = {
+                startingCash: lastEndingCash,
+                startingVisa: lastEndingVisa,
+                transactions: allPeriods[nextKey] ? allPeriods[nextKey].transactions : []
+            };
+            saveAllPeriods();
+
+            currentPeriodKey = nextKey;
+            document.getElementById('trackerYear').value = nextY;
+            document.getElementById('trackerMonth').value = nextM;
+            loadPeriodIntoUI(nextKey, true);
+            recalculateBalances();
+            closeEndMonthModal();
+            showToast(`تم أرشفة الشهر وبدء ${periodLabel(nextKey)} 🎉`, '📤');
+        }
+
+        // ============ Mobile add-form toggle ============
+        function toggleAddForm() {
+            if (window.innerWidth >= 768) return;
+            const form = document.getElementById('txForm');
+            const chevron = document.getElementById('addFormChevron');
+            const isHidden = form.classList.contains('hidden');
+            if (isHidden) {
+                form.classList.remove('hidden');
+                form.classList.add('grid');
+                chevron.classList.add('rotate-180');
+            } else {
+                form.classList.add('hidden');
+                form.classList.remove('grid');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+        function scrollToAddForm() {
+            const form = document.getElementById('txForm');
+            if (form.classList.contains('hidden')) toggleAddForm();
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => document.getElementById('txDesc').focus(), 300);
+        }
+
+        // ============ Type toggles (Add / Edit forms) ============
+        function handleTypeChange() {
+            const type = document.getElementById('txType').value;
+            const methodContainer = document.getElementById('methodContainer');
+            const transferDirContainer = document.getElementById('transferDirContainer');
+            const amountNormal = document.getElementById('txAmount');
+            const amountTransfer = document.getElementById('txAmountTransfer');
+
+            if (type === 'transfer') {
+                methodContainer.classList.add('hidden');
+                transferDirContainer.classList.remove('hidden');
+                amountNormal.removeAttribute('required');
+                amountTransfer.setAttribute('required', 'required');
+            } else {
+                methodContainer.classList.remove('hidden');
+                transferDirContainer.classList.add('hidden');
+                amountTransfer.removeAttribute('required');
+                amountNormal.setAttribute('required', 'required');
+            }
+        }
+        function handleEditTypeChange() {
+            const type = document.getElementById('editTxType').value;
+            const methodContainer = document.getElementById('editMethodContainer');
+            const transferDirContainer = document.getElementById('editTransferDirContainer');
+            if (type === 'transfer') {
+                methodContainer.classList.add('hidden');
+                transferDirContainer.classList.remove('hidden');
+            } else {
+                methodContainer.classList.remove('hidden');
+                transferDirContainer.classList.add('hidden');
+            }
+        }
+
+        // ============ Toast ============
+        function showToast(text, icon = '✨') {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastText').innerText = text;
+            document.getElementById('toastIcon').innerText = icon;
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 2500);
+        }
+
+        // ============ Core Calculation & Render ============
+        function recalculateBalances() {
+            const startingCash = parseFloat(document.getElementById('startingCash').value) || 0;
+            const startingVisa = parseFloat(document.getElementById('startingVisa').value) || 0;
+
+            let runningCash = startingCash;
+            let runningVisa = startingVisa;
+            let totalCashSpent = 0;
+            let totalVisaSpent = 0;
+            let totalTax = 0;
+            let biggestExpense = 0;
+            let biggestExpenseDesc = "لا يوجد";
+
+            const tbody = document.getElementById('trackerTableBody');
+            const mobileContainer = document.getElementById('mobileCardsContainer');
+            tbody.innerHTML = '';
+            mobileContainer.innerHTML = '';
+
+            transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            document.getElementById('emptyState').classList.toggle('hidden', transactions.length !== 0);
+
+            transactions.forEach((tx) => {
+                let cashVal = "", visaVal = "", feeVal = "", methodLabel = "";
+                const amount = parseFloat(tx.amount) || 0;
+                const tax = parseFloat(tx.tax) || 0;
+
+                if (tx.type === 'expense') {
+                    if (tx.method === 'cash') {
+                        cashVal = `-${amount.toFixed(2)}`;
+                        runningCash -= amount;
+                        totalCashSpent += amount;
+                        methodLabel = "كاش 💵";
+                        if (amount > biggestExpense) { biggestExpense = amount; biggestExpenseDesc = `${tx.desc} (${amount.toFixed(2)} كاش)`; }
+                    } else {
+                        visaVal = `-${amount.toFixed(2)}`;
+                        runningVisa -= amount;
+                        totalVisaSpent += amount;
+                        methodLabel = "فيزا 💳";
+                        if (amount > biggestExpense) { biggestExpense = amount; biggestExpenseDesc = `${tx.desc} (${amount.toFixed(2)} فيزا)`; }
+                    }
+                } else if (tx.type === 'income') {
+                    if (tx.method === 'cash') {
+                        cashVal = `+${amount.toFixed(2)}`;
+                        runningCash += amount;
+                        methodLabel = "كاش 💵";
+                    } else {
+                        visaVal = `+${amount.toFixed(2)}`;
+                        runningVisa += amount;
+                        methodLabel = "فيزا 💳";
+                    }
+                } else if (tx.type === 'transfer') {
+                    if (tax > 0) { totalTax += tax; feeVal = `-${tax.toFixed(2)}`; }
+                    if (tx.transferDir === 'visa_to_cash') {
+                        visaVal = `-${(amount + tax).toFixed(2)}`;
+                        cashVal = `+${amount.toFixed(2)}`;
+                        runningVisa -= (amount + tax);
+                        runningCash += amount;
+                        methodLabel = "تحويل (فيزا ➔ كاش) 🔁";
+                    } else {
+                        cashVal = `-${(amount + tax).toFixed(2)}`;
+                        visaVal = `+${amount.toFixed(2)}`;
+                        runningCash -= (amount + tax);
+                        runningVisa += amount;
+                        methodLabel = "تحويل (كاش ➔ فيزا) 🔁";
+                    }
+                }
+
+                const formattedDate = tx.date ? tx.date.split('-').reverse().join('/') : '';
+
+                const row = document.createElement('tr');
+                row.className = "table-row-dotted hover:bg-sky-50/40 transition duration-150 group";
+                row.innerHTML = `
+                    <td class="p-3 text-center border-l border-blue-100/30 text-slate-500 font-mono">${formattedDate}</td>
+                    <td class="p-3 border-l border-blue-100/30 text-sky-950 font-semibold">
+                        ${tx.desc}
+                        ${tx.type === 'transfer' ? '<span class="text-[9px] bg-sky-100 text-sky-800 font-bold px-1.5 py-0.5 rounded-full mr-2">تحويل 🔁</span>' : ''}
+                    </td>
+                    <td class="p-3 text-center border-l border-blue-100/30 font-semibold ${cashVal.startsWith('+') ? 'text-emerald-600' : 'text-rose-600'}">${cashVal || '-'}</td>
+                    <td class="p-3 text-center border-l border-blue-100/30 font-semibold ${visaVal.startsWith('+') ? 'text-emerald-600' : 'text-rose-600'}">${visaVal || '-'}</td>
+                    <td class="p-3 text-center border-l border-blue-100/30 font-semibold text-amber-600">${feeVal || '-'}</td>
+                    <td class="p-3 text-center border-l border-blue-100/30 font-bold text-slate-700">${runningCash.toFixed(2)}</td>
+                    <td class="p-3 text-center border-l border-blue-100/30 font-bold text-slate-700">${runningVisa.toFixed(2)}</td>
+                    <td class="p-3 text-slate-500 italic">
+                        <input type="text" value="${tx.notes || ''}" placeholder="أضف ملاحظة..." onchange="updateNotes(${tx.id}, this.value)" class="w-full bg-transparent hover:bg-white/50 focus:bg-white border-none rounded px-1 py-0.5 focus:outline-none focus:ring-1 focus:ring-sky-300 text-xs">
+                    </td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <button onclick="openEditModal(${tx.id})" class="text-slate-300 hover:text-sky-600 p-1 rounded-md hover:bg-sky-50 transition opacity-0 group-hover:opacity-100" title="تعديل">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        </button>
+                        <button onclick="deleteTransaction(${tx.id})" class="text-slate-300 hover:text-rose-600 p-1 rounded-md hover:bg-rose-50 transition opacity-0 group-hover:opacity-100" title="حذف">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                const card = document.createElement('div');
+                let badgeColor = "bg-rose-50 text-rose-700 border-rose-100";
+                if (tx.type === 'income') badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-100";
+                if (tx.type === 'transfer') badgeColor = "bg-sky-50 text-sky-700 border-sky-100";
+
+                card.className = "bg-white border border-blue-50/80 rounded-2xl p-3.5 shadow-sm space-y-2.5 relative";
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-slate-400 font-bold">${formattedDate}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full font-bold border ${badgeColor}">${methodLabel}</span>
+                    </div>
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm leading-tight">${tx.desc}</h5>
+                            <div class="flex flex-wrap gap-3 mt-1.5 text-[11px] font-semibold">
+                                ${cashVal ? `<span class="flex items-center gap-1">الكاش: <b class="${cashVal.startsWith('+') ? 'text-emerald-600' : 'text-rose-600'}">${cashVal}</b></span>` : ''}
+                                ${visaVal ? `<span class="flex items-center gap-1">الفيزا: <b class="${visaVal.startsWith('+') ? 'text-emerald-600' : 'text-rose-600'}">${visaVal}</b></span>` : ''}
+                                ${feeVal ? `<span class="flex items-center gap-1">الرسوم: <b class="text-amber-600">${feeVal}</b></span>` : ''}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <button onclick="openEditModal(${tx.id})" class="text-sky-400 hover:text-sky-600 bg-sky-50/60 p-2 rounded-xl transition" title="تعديل">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            </button>
+                            <button onclick="deleteTransaction(${tx.id})" class="text-rose-300 hover:text-rose-600 bg-rose-50/50 p-2 rounded-xl transition" title="حذف">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-dotted border-slate-100 text-[11px] text-slate-500 font-medium">
+                        <div>رصيد الكاش الحالي: <b class="text-slate-800 font-bold">${runningCash.toFixed(2)}</b></div>
+                        <div>رصيد الفيزا الحالي: <b class="text-slate-800 font-bold">${runningVisa.toFixed(2)}</b></div>
+                    </div>
+                    <div class="pt-1.5">
+                        <input type="text" value="${tx.notes || ''}" placeholder="📝 أضف ملاحظة..." onchange="updateNotes(${tx.id}, this.value)" class="w-full bg-slate-50/70 border-none rounded-xl px-2.5 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-sky-300 text-slate-700">
+                    </div>
+                `;
+                mobileContainer.appendChild(card);
+            });
+
+            lastEndingCash = runningCash;
+            lastEndingVisa = runningVisa;
+
+            document.getElementById('endingCashDisplay').innerText = runningCash.toFixed(2);
+            document.getElementById('endingVisaDisplay').innerText = runningVisa.toFixed(2);
+            document.getElementById('totalCashSpentDisplay').innerText = totalCashSpent.toFixed(2);
+            document.getElementById('totalVisaSpentDisplay').innerText = totalVisaSpent.toFixed(2);
+            document.getElementById('totalTaxDisplay').innerText = totalTax.toFixed(2);
+            document.getElementById('biggestExpenseDisplay').innerText = biggestExpense > 0 ? biggestExpenseDesc : "لا يوجد";
+            document.getElementById('reportTotalSpent').innerText = (totalCashSpent + totalVisaSpent).toFixed(2);
+            document.getElementById('reportTotalTax').innerText = totalTax.toFixed(2);
+
+            savePeriodData(currentPeriodKey);
+        }
+
+        // ============ Add / Edit / Delete ============
+        function addTransaction(e) {
+            e.preventDefault();
+            const date = document.getElementById('txDate').value;
+            const desc = document.getElementById('txDesc').value.trim();
+            const type = document.getElementById('txType').value;
+
+            let amount = 0, method = "", transferDir = "", tax = 0;
+            if (type === 'transfer') {
+                amount = parseFloat(document.getElementById('txAmountTransfer').value);
+                transferDir = document.getElementById('txTransferDir').value;
+                tax = parseFloat(document.getElementById('txTransferTax').value) || 0;
+            } else {
+                amount = parseFloat(document.getElementById('txAmount').value);
+                method = document.getElementById('txMethod').value;
+            }
+
+            if (!date || !desc || isNaN(amount) || amount <= 0) {
+                showToast("الرجاء التحقق من البيانات المدخلة!", "⚠️");
+                return;
+            }
+
+            transactions.push({ id: Date.now(), date, desc, type, method, transferDir, amount, tax, notes: "" });
+            recalculateBalances();
+            showToast("تمت إضافة المعاملة بنجاح!", "🎉");
+
+            document.getElementById('txDesc').value = '';
+            document.getElementById('txAmount').value = '';
+            document.getElementById('txAmountTransfer').value = '';
+            document.getElementById('txTransferTax').value = '';
+            document.getElementById('txDesc').focus();
+        }
+
+        function updateNotes(id, value) {
+            const tx = transactions.find(t => t.id === id);
+            if (tx) {
+                tx.notes = value;
+                savePeriodData(currentPeriodKey);
+                showToast("تم حفظ الملاحظة 💾");
+            }
+        }
+
+        function openEditModal(id) {
+            const tx = transactions.find(t => t.id === id);
+            if (!tx) return;
+            document.getElementById('editTxId').value = tx.id;
+            document.getElementById('editTxDate').value = tx.date;
+            document.getElementById('editTxDesc').value = tx.desc;
+            document.getElementById('editTxType').value = tx.type;
+            document.getElementById('editTxNotes').value = tx.notes || '';
+
+            if (tx.type === 'transfer') {
+                document.getElementById('editTxAmountTransfer').value = tx.amount;
+                document.getElementById('editTxTransferDir').value = tx.transferDir || 'visa_to_cash';
+                document.getElementById('editTxTransferTax').value = tx.tax || 0;
+            } else {
+                document.getElementById('editTxAmount').value = tx.amount;
+                document.getElementById('editTxMethod').value = tx.method || 'cash';
+            }
+            handleEditTypeChange();
+
+            const overlay = document.getElementById('editModalOverlay');
+            overlay.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.querySelector('.modal-panel').classList.remove('translate-y-4');
+            });
+        }
+        function closeEditModal() {
+            const overlay = document.getElementById('editModalOverlay');
+            overlay.classList.add('opacity-0');
+            overlay.querySelector('.modal-panel').classList.add('translate-y-4');
+            setTimeout(() => overlay.classList.add('hidden'), 200);
+        }
+        function saveEditedTransaction(e) {
+            e.preventDefault();
+            const id = parseFloat(document.getElementById('editTxId').value);
+            const tx = transactions.find(t => t.id === id);
+            if (!tx) return;
+
+            const date = document.getElementById('editTxDate').value;
+            const desc = document.getElementById('editTxDesc').value.trim();
+            const type = document.getElementById('editTxType').value;
+            const notes = document.getElementById('editTxNotes').value;
+
+            let amount = 0, method = "", transferDir = "", tax = 0;
+            if (type === 'transfer') {
+                amount = parseFloat(document.getElementById('editTxAmountTransfer').value);
+                transferDir = document.getElementById('editTxTransferDir').value;
+                tax = parseFloat(document.getElementById('editTxTransferTax').value) || 0;
+            } else {
+                amount = parseFloat(document.getElementById('editTxAmount').value);
+                method = document.getElementById('editTxMethod').value;
+            }
+
+            if (!date || !desc || isNaN(amount) || amount <= 0) {
+                showToast("الرجاء التحقق من البيانات المدخلة!", "⚠️");
+                return;
+            }
+
+            Object.assign(tx, { date, desc, type, method, transferDir, amount, tax, notes });
+            recalculateBalances();
+            closeEditModal();
+            showToast("تم حفظ التعديلات بنجاح ✅");
+        }
+
+        function deleteTransaction(id) {
+            transactions = transactions.filter(t => t.id !== id);
+            recalculateBalances();
+            showToast("تم حذف المعاملة", "🗑️");
+        }
+
+        function confirmClearAll() {
+            if (window.confirm("هل أنت متأكد من رغبتك في مسح كل عمليات هذا الشهر فقط؟")) {
+                transactions = [];
+                recalculateBalances();
+                showToast("تم تصفير عمليات هذا الشهر", "🔄");
+            }
+        }
+
+        function printTracker() { window.print(); }
+    </script>
+</body>
+</html>
